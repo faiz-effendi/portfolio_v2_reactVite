@@ -48,7 +48,7 @@
         "id": 1,
         "title": "Hybrid Retrieval on RAG System",
         "description": "Reproduced the GraphRAG architecture introduced by Edge et al. (Microsoft Research, 2025), combining knowledge graph traversal and vector-based semantic search to improve contextual grounding.",
-        "image": "../public/graph.png",
+        "image": "/graph.png",
         "techStack": [
           "Python",
           "LLM",
