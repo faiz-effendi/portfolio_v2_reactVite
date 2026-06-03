@@ -1,0 +1,86 @@
+{
+  "personal": {
+    "name": "Faiz Effendi",
+    "role": "Data Scientist & Software Developer",
+    "tagline": "I am a certified (BNSP) associate data scientist and software Developer with hands-on experience in real-world projects,",
+    "email": "faizeffendi2004@gmail.com",
+    "github": "https://github.com/faiz-effendi",
+    "linkedin": "https://www.linkedin.com/in/faizeffendi/",
+    "instagram": "https://www.instagram.com/faizeffendii/"
+  },
+  "skills": [
+    {
+      "name": "Python",
+      "icon": "Terminal"
+    },
+    {
+      "name": "TensorFlow",
+      "icon": "Cpu"
+    },
+    {
+      "name": "React",
+      "icon": "Code"
+    },
+    {
+      "name": "Node.js",
+      "icon": "Server"
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "role": "Laboratory Teaching Assistant",
+      "company": "UPN 'Veteran' Yogyakarta",
+      "duration": "Sept 2025 - Present",
+      "description": "Enabled students to perform end-to-end data workflows. Assisted practicum classes with 60+ students, including mentoring 13+ final projects."
+    },
+    {
+      "id": 2,
+      "role": "Machine Learning Engineer",
+      "company": "Bangkit Academy by Google",
+      "duration": "Sept - December 2024",
+      "description": "Develop and Deploy a deep learning models using TensorFlow and achieved over 95% model accuracy. Earned 93.7 score in the TensorFlow Developer Certification."
+    }
+  ],
+  "projects": {
+    "aiml": [
+      {
+        "id": 1,
+        "title": "Hybrid Retrieval on RAG System",
+        "description": "Reproduced the GraphRAG architecture introduced by Edge et al. (Microsoft Research, 2025), combining knowledge graph traversal and vector-based semantic search to improve contextual grounding.",
+        "image": "../public/graph.png",
+        "techStack": [
+          "Python",
+          "LLM",
+          "NLP"
+        ],
+        "link": "http://eprints.upnyk.ac.id/47368/"
+      }
+    ],
+    "software_dev": [
+      {
+        "id": 3,
+        "title": "E-Commerce Web App with CI/CD",
+        "description": "An fullstack web application using React.js for the Frontend and Express.js for the Backend service. Deployed using CI/CD pipelines on Google Cloud Platform",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
+        "techStack": [
+          "React.js",
+          "Express.js",
+          "Google Cloud Platform"
+        ],
+        "link": "https://github.com/faiz-effendi/tcc-final-project-be.git"
+      },
+      {
+        "id": 4,
+        "title": "Tunas: Indonesian Stocks Mobile App",
+        "description": "A cross-platform Minimum Viable Product for Indonesia stocks monitoring using Flutter. Utilizing SHA-256 encryption for secure authentication and data storage.",
+        "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=800&auto=format&fit=crop",
+        "techStack": [
+          "Flutter",
+          "Google Maps API"
+        ],
+        "link": "https://github.com/faiz-effendi/tpm_stocks_market.git"
+      }
+    ]
+  }
+}

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0f172a;
+  --color-darker: #020617;
+  --color-primary: #3b82f6;
+  --color-secondary: #60a5fa;
+  --font-sans: 'Inter', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-darker text-slate-200 antialiased font-sans selection:bg-primary/30 selection:text-white;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 py-20 md:py-32;
+  }
+
+  .glass-card {
+    @apply bg-dark/50 backdrop-blur-md border border-slate-800/50 shadow-xl;
+  }
+}
+
+/* =====================================================
+   ANIMATED BACKGROUND ORBS
+   ===================================================== */
+
+.orb {
+  position: fixed;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -50;
+  opacity: 0.18;
+  will-change: transform;
+}
+
+/* Orb 1 — Blue, top-left, slowest */
+.orb-blue {
+  width: 55vw;
+  height: 55vw;
+  max-width: 500px;
+  max-height: 500px;
+  background: radial-gradient(circle, #3b82f6, #1d4ed8);
+  top: -15%;
+  left: -15%;
+  animation: float-blue 12s ease-in-out infinite alternate;
+}
+
+/* Orb 2 — Violet, bottom-right */
+.orb-violet {
+  width: 50vw;
+  height: 50vw;
+  max-width: 340px;
+  max-height: 340px;
+  background: radial-gradient(circle, #7c3aed, #4c1d95);
+  bottom: -20%;
+  right: -15%;
+  animation: float-violet 15s ease-in-out infinite alternate;
+}
+
+/* Orb 3 — Cyan, center-right, medium speed */
+.orb-cyan {
+  width: 35vw;
+  height: 35vw;
+  max-width: 380px;
+  max-height: 380px;
+  background: radial-gradient(circle, #06b6d4, #0e7490);
+  top: 40%;
+  right: -5%;
+  animation: float-cyan 10s ease-in-out infinite alternate;
+}
+
+/* Keyframe animations — each orb has a unique drift path */
+@keyframes float-blue {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(40px, 30px) scale(1.07);
+  }
+
+  66% {
+    transform: translate(-20px, 50px) scale(0.96);
+  }
+
+  100% {
+    transform: translate(30px, -30px) scale(1.04);
+  }
+}
+
+@keyframes float-violet {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(-50px, -30px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(20px, -50px) scale(0.97);
+  }
+
+  100% {
+    transform: translate(-30px, 40px) scale(1.03);
+  }
+}
+
+@keyframes float-cyan {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  40% {
+    transform: translate(-40px, 40px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(25px, -35px) scale(0.95);
+  }
+}
