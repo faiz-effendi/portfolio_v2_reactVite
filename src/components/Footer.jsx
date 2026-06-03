@@ -15,9 +15,9 @@ const Footer = () => {
 
         <a
           href={`mailto:${personal.email}`}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-blue-600 text-white font-medium rounded-full transition-colors shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] mb-8"
+          className="inline-flex items-center gap-2 px-6 py-3 text-sm bg-primary hover:bg-blue-600 text-white font-medium rounded-full transition-colors shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] mb-8"
         >
-          <Mail size={20} />
+          <Mail size={18} />
           Email to Say Hello
         </a>
 
