@@ -49,6 +49,7 @@
         "title": "Hybrid Retrieval on RAG System",
         "description": "Reproduced the GraphRAG architecture introduced by Edge et al. (Microsoft Research, 2025), combining knowledge graph traversal and vector-based semantic search to improve contextual grounding.",
         "image": "/graph.png",
+        "pdf": "/portfolio_hybridRAG.pdf",
         "techStack": [
           "Python",
           "LLM",
@@ -63,6 +64,7 @@
         "title": "PixPlay: Retro Music Player with CI/CD",
         "description": "An fullstack web application using React.js for the Frontend and Express.js for the Backend service. Deployed using CI/CD pipelines on Google Cloud Platform",
         "image": "/pixplay.png",
+        "pdf": "/portfolio_pixplay.pdf",
         "techStack": [
           "React.js",
           "Express.js",
@@ -75,6 +77,7 @@
         "title": "Tunas: Indonesian Stocks Mobile App",
         "description": "A cross-platform Minimum Viable Product for Indonesia stocks monitoring using Flutter. Utilizing SHA-256 encryption for secure authentication and data storage.",
         "image": "/tunas.png",
+        "pdf": "/portfolio_tunas.pdf",
         "techStack": [
           "Flutter",
           "Google Maps API"
