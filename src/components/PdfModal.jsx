@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Download, Loader2 } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
 const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
-  const [pdfjs, setPdfjs] = useState(null);
+  const [pdfjs, setPdfjs] = useState(() => window.pdfjsLib || null);
   const [pdfDoc, setPdfDoc] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   const [numPages, setNumPages] = useState(0);
@@ -17,10 +17,7 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen) return;
 
-    if (window.pdfjsLib) {
-      setPdfjs(window.pdfjsLib);
-      return;
-    }
+    if (window.pdfjsLib) return;
 
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
@@ -40,11 +37,6 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
   // Load the PDF Document
   useEffect(() => {
     if (!pdfjs || !pdfUrl || !isOpen) return;
-
-    setLoading(true);
-    setPdfDoc(null);
-    setPageNum(1);
-    setNumPages(0);
 
     const loadingTask = pdfjs.getDocument(pdfUrl);
     loadingTask.promise.then((pdf) => {
@@ -142,6 +134,9 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen) return;
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight' && pageNum < numPages && !rendering) {
         setPageNum(prev => prev + 1);
@@ -153,7 +148,10 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
   }, [isOpen, pageNum, numPages, rendering, onClose]);
 
   const goToNextPage = () => {
@@ -175,7 +173,7 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
         >
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-darker/80 backdrop-blur-sm" 
+            className="absolute inset-0 bg-black/85" 
             onClick={onClose} 
           />
 
@@ -185,15 +183,18 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative w-full h-full sm:w-[90vw] sm:max-w-6xl sm:h-[85vh] sm:rounded-2xl bg-slate-900 border-0 sm:border border-slate-700 shadow-2xl overflow-hidden flex flex-col"
+            className="relative flex h-full w-full flex-col overflow-hidden bg-surface-card sm:h-[85vh] sm:w-[90vw] sm:max-w-6xl sm:rounded-lg sm:border sm:border-hairline"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-slides-title"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-800 bg-slate-900/50">
+            <div className="flex items-center justify-between border-b border-hairline bg-surface-card px-4 py-3 sm:px-6 sm:py-4">
               <div className="flex items-center gap-2 sm:gap-4">
-                <h3 className="text-base sm:text-lg font-semibold text-white">Project Slides</h3>
+                <h3 id="project-slides-title" className="text-base font-semibold text-ink sm:text-lg">Project Slides</h3>
                 {!loading && numPages > 0 && (
-                  <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium bg-primary/20 text-primary rounded-full border border-primary/20">
+                  <span className="rounded-xs border border-hairline-strong px-2 py-1 font-code text-[10px] text-primary sm:px-3 sm:text-xs">
                     {pageNum}/{numPages}
                   </span>
                 )}
@@ -222,8 +223,10 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
                   <Download size={20} />
                 </a>
                 <button 
+                  type="button"
                   onClick={onClose}
-                  className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-full transition-colors"
+                  aria-label="Close project slides"
+                  className="rounded-md p-2 text-muted transition-colors hover:bg-surface-elevated hover:text-ink"
                 >
                   <X size={20} />
                 </button>
@@ -231,7 +234,7 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
             </div>
 
             {/* Content Body */}
-            <div className="relative flex-grow flex flex-col items-center justify-center p-1 sm:p-4 overflow-hidden bg-slate-950/80">
+            <div className="relative flex flex-grow flex-col items-center justify-center overflow-hidden bg-canvas p-1 sm:p-4">
               
               {loading && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/80 z-10 backdrop-blur-sm">
@@ -280,7 +283,7 @@ const PdfModal = ({ pdfUrl, projectLink, isOpen, onClose }) => {
               <button
                 onClick={goToNextPage}
                 disabled={pageNum >= numPages || loading || rendering}
-                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-primary hover:bg-primary/80 disabled:opacity-50 disabled:cursor-not-allowed rounded-full transition-all shadow-lg shadow-primary/20"
+                className="flex items-center gap-1 rounded-full bg-primary px-3 py-2 text-xs font-medium text-on-primary shadow-lg shadow-primary/20 transition-all hover:bg-primary-active disabled:cursor-not-allowed disabled:bg-primary-disabled disabled:text-muted sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
               >
                 <span className="hidden sm:inline">Next Slide</span>
                 <ChevronRight size={18} />

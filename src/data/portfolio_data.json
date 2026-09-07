@@ -1,8 +1,10 @@
 {
   "personal": {
     "name": "Faiz Effendi",
-    "role": "Data Scientist & Software Developer",
-    "tagline": "I am a certified (BNSP) associate data scientist and software Developer with hands-on experience in real-world projects.",
+    "role": "Software Engineer / Data Scientist",
+    "tagline": "I build intelligence systems and production-ready applications, from model experimentation to deployed software.",
+    "location": "Jakarta, Indonesia",
+    "availability": "Lifelong learner",
     "email": "faizeffendi2004@gmail.com",
     "github": "https://github.com/faiz-effendi",
     "linkedin": "https://www.linkedin.com/in/faizeffendi/",
@@ -26,16 +28,43 @@
       "icon": "Server"
     }
   ],
+  "capabilities": [
+    {
+      "label": "Machine Learning",
+      "items": ["Python", "TensorFlow", "NLP", "RAG"]
+    },
+    {
+      "label": "Application Development",
+      "items": ["React", "Node.js", "Express", "Flutter"]
+    },
+    {
+      "label": "Cloud & Delivery",
+      "items": ["Google Cloud", "CI/CD", "REST APIs"]
+    }
+  ],
+  "stats": [
+    { "value": "95%+", "label": "image classification model accuracy achieved" },
+    { "value": "93.7", "label": "TensorFlow certification score" },
+    { "value": "60+", "label": "students assisted" },
+    { "value": "13+", "label": "final projects mentored" }
+  ],
   "experience": [
     {
       "id": 1,
-      "role": "Laboratory Teaching Assistant",
-      "company": "UPN 'Veteran' Yogyakarta",
-      "duration": "Sept 2025 - Present",
-      "description": "Enabled students to perform end-to-end data workflows. Assisted practicum classes with 60+ students, including mentoring 13+ final projects."
+      "role": "AI Prompt Engineer",
+      "company": "Karno's Visual Magic",
+      "duration": "June - Aug 2026",
+      "description": "Engineered structured visual prompts for characters, environments, and scripted scenes for the Rimba Raya series. Evaluated and iteratively refined AI-generated images and videos to maintain visual consistency and align each output with the project director's creative vision."
     },
     {
       "id": 2,
+      "role": "Laboratory Teaching Assistant",
+      "company": "UPN 'Veteran' Yogyakarta",
+      "duration": "Sept 2025 - June 2026",
+      "description": "Enabled students to perform end-to-end data workflows. Assisted practicum classes with 60+ students, including mentoring 13+ final projects."
+    },
+    {
+      "id": 3,
       "role": "Machine Learning Engineer",
       "company": "Bangkit Academy by Google",
       "duration": "Sept - December 2024",
@@ -60,9 +89,9 @@
     ],
     "software_dev": [
       {
-        "id": 3,
+        "id": 2,
         "title": "PixPlay: Retro Music Player with CI/CD",
-        "description": "An fullstack web application using React.js for the Frontend and Express.js for the Backend service. Deployed using CI/CD pipelines on Google Cloud Platform",
+        "description": "A full-stack web application built with React and Express, deployed through a CI/CD pipeline on Google Cloud Platform.",
         "image": "/pixplay.png",
         "pdf": "/portfolio_pixplay.pdf",
         "techStack": [
@@ -73,9 +102,9 @@
         "link": "https://github.com/faiz-effendi/tcc-final-project-be.git"
       },
       {
-        "id": 4,
+        "id": 3,
         "title": "Tunas: Indonesian Stocks Mobile App",
-        "description": "A cross-platform Minimum Viable Product for Indonesia stocks monitoring using Flutter. Utilizing SHA-256 encryption for secure authentication and data storage.",
+        "description": "A cross-platform MVP for monitoring Indonesian stocks, built with Flutter and integrated with location-based features through Google Maps API.",
         "image": "/tunas.png",
         "pdf": "/portfolio_tunas.pdf",
         "techStack": [

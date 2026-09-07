@@ -1,53 +1,42 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import data from '../data/portfolio_data.json';
-import { Briefcase } from 'lucide-react';
 
 const Experience = () => {
-  const { experience } = data;
+  const { experience, capabilities } = data;
 
   return (
     <section id="experience" className="section-container">
-      <div className="flex flex-col items-center mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-3 text-primary mb-4"
-        >
-          <Briefcase size={24} />
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Work Experience</h2>
-        </motion.div>
-        <p className="text-slate-400 text-center max-w-2xl">My professional journey and roles I've taken on.</p>
+      <div className="grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <p className="eyebrow">Experience</p>
+          <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-ink md:text-5xl">Work grounded in measurable outcomes.</h2>
+        </div>
+
+        <div className="lg:col-span-8">
+          {experience.map((item) => (
+            <article key={item.id} className="grid gap-4 border-t border-hairline py-8 first:border-t-0 sm:grid-cols-[11rem_1fr]">
+              <p className="font-code text-xs text-primary">{item.duration}</p>
+              <div>
+                <h3 className="text-xl font-semibold text-ink">{item.role}</h3>
+                <p className="mt-1 text-sm text-muted">{item.company}</p>
+                <p className="mt-4 max-w-2xl leading-relaxed text-body">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
 
-      <div className="max-w-3xl mx-auto relative">
-        {/* Timeline Line */}
-        <div className="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-[2px] bg-slate-800 -translate-x-1/2 rounded-full" />
-
-        {experience.map((exp, index) => (
-          <motion.div 
-            key={exp.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`relative flex flex-col md:flex-row gap-8 mb-12 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-          >
-            {/* Timeline Dot */}
-            <div className="absolute left-[27px] md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 mt-6 shadow-[0_0_15px_rgba(59,130,246,0.6)]" />
-            
-            {/* Content Box */}
-            <div className="pl-16 md:pl-0 w-full md:w-1/2 md:px-8 group">
-              <div className="glass-card rounded-2xl p-6 group-hover:border-primary/30 transition-colors">
-                <div className="text-sm font-semibold text-primary mb-2">{exp.duration}</div>
-                <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
-                <h4 className="text-md text-slate-300 font-medium mb-4">{exp.company}</h4>
-                <p className="text-slate-400 text-sm leading-relaxed">{exp.description}</p>
-              </div>
+      <div id="capabilities" className="mt-16 border-t border-hairline pt-12">
+        <p className="eyebrow mb-6">Capabilities</p>
+        <div className="grid overflow-hidden rounded-lg border border-hairline md:grid-cols-3">
+          {capabilities.map((group, index) => (
+            <div key={group.label} className={`bg-surface-card p-6 md:p-8 ${index < capabilities.length - 1 ? 'border-b border-hairline md:border-b-0 md:border-r' : ''}`}>
+              <h3 className="text-lg font-semibold text-ink">{group.label}</h3>
+              <ul className="mt-5 space-y-3 font-code text-sm text-muted">
+                {group.items.map((item) => <li key={item}><span className="mr-2 text-primary">/</span>{item}</li>)}
+              </ul>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Experience from './components/Experience'
@@ -26,16 +26,7 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen">
-      {/* Global Background - Dark Base */}
-      <div className="fixed inset-0 bg-darker -z-50" />
-
-      {/* Animated Orb 1 — Blue (Top Left) */}
-      <div className="orb orb-blue" />
-      {/* Animated Orb 2 — Violet (Bottom Right) */}
-      <div className="orb orb-violet" />
-      {/* Animated Orb 3 — Cyan (Center Right) */}
-      <div className="orb orb-cyan" />
+    <div className="min-h-screen bg-canvas text-body">
       
       <Navbar />
       
@@ -49,6 +40,7 @@ function App() {
 
       {/* Portal-level Modal — rendered at root to escape any overflow/transform constraints */}
       <PdfModal
+        key={activePdfUrl || 'closed'}
         isOpen={isPdfOpen}
         pdfUrl={activePdfUrl}
         projectLink={activeProjectLink}
