@@ -21,7 +21,7 @@ const ProjectCard = ({ project, onViewDetails, featured = false }) => {
       onKeyDown={handleCardKeyDown}
       className={`group cursor-pointer overflow-hidden rounded-lg border border-hairline bg-surface-card transition-colors hover:border-hairline-strong focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas ${featured ? 'lg:grid lg:grid-cols-12' : 'flex h-full flex-col'}`}
     >
-      <div className={`overflow-hidden border-hairline bg-surface-soft ${featured ? 'min-h-72 border-b lg:col-span-7 lg:border-b-0 lg:border-r' : 'aspect-[16/10] border-b'}`}>
+      <div className={`h-44 overflow-hidden border-b border-hairline bg-surface-soft sm:h-60 ${featured ? 'lg:col-span-7 lg:h-auto lg:min-h-72 lg:border-b-0 lg:border-r' : 'lg:h-auto lg:aspect-[16/10]'}`}>
         <img src={project.image} alt={`${project.title} project preview`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
       </div>
 
