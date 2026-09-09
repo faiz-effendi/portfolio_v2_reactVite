@@ -19,6 +19,8 @@
   --color-on-primary: #0a0a0a;
   --color-on-dark: #ffffff;
   --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
   --font-sans: 'Inter', sans-serif;
   --font-code: 'JetBrains Mono', ui-monospace, monospace;
   --radius-xs: 4px;
@@ -30,6 +32,7 @@
 @layer base {
   :root { color-scheme: dark; }
   html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: 4rem; }
   body {
     @apply m-0 bg-canvas font-sans text-body antialiased selection:bg-primary selection:text-on-primary;
   }

@@ -1,12 +1,13 @@
 import { ArrowUpRight, Mail } from 'lucide-react';
 import data from '../data/portfolio_data.json';
 
-const Footer = () => {
+const Footer = ({ showCta = true }) => {
   const { personal } = data;
 
   return (
     <footer id="contact" className="bg-canvas">
-      <div className="section-container">
+      <div className={showCta ? 'section-container' : 'page-container py-10'}>
+        {showCta && (
         <div className="rounded-lg bg-primary p-7 text-on-primary sm:p-10 md:p-14">
           <p className="font-code text-xs font-semibold uppercase tracking-[0.14em]">Start a conversation</p>
           <div className="mt-6 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
@@ -16,8 +17,9 @@ const Footer = () => {
             </a>
           </div>
         </div>
+        )}
 
-        <div className="mt-10 flex flex-col justify-between gap-6 border-t border-hairline pt-8 sm:flex-row sm:items-center">
+        <div className={`${showCta ? 'mt-10' : ''} flex flex-col justify-between gap-6 border-t border-hairline pt-8 sm:flex-row sm:items-center`}>
           <div>
             <p className="font-code text-sm font-semibold text-ink">Faiz Effendi</p>
             <p className="mt-2 text-sm text-muted">Data scientist & software developer · {personal.location}</p>
